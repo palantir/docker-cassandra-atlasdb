@@ -614,7 +614,6 @@ unlogged_batch_across_partitions_warn_threshold: 10
 # If your data directories are backed by SSD, you should increase this
 # to the number of cores.
 concurrent_compactors: 1
-in_memory_compaction_limit_in_mb: 2
 
 # Throttles compaction to the given total throughput across the entire
 # system. The faster you insert data, the faster you need to compact in
