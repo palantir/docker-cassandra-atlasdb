@@ -49,6 +49,12 @@ if [ "$1" = 'cassandra' ]; then
         fi
     done
 
+    # Should not have cassandra-topology.properties if we are using the GossipingPropertyFileSnitch
+    snitch=$(grep "endpoint_snitch:" "$CASSANDRA_CONFIG/cassandra.yaml" | cut -d$" " -f 2)
+    if [ "$snitch" = 'GossipingPropertyFileSnitch' ]; then
+        rm "$CASSANDRA_CONFIG/cassandra-topology.properties"
+    fi
+
     for rackdc in dc rack; do
         var="$(echo CASSANDRA_${rackdc} | tr '[:lower:]' '[:upper:]')"
         val="$(eval "echo \$${var}")"
