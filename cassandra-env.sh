@@ -261,7 +261,7 @@ JVM_OPTS="$JVM_OPTS -XX:GCLogFileSize=10M"
 # comment out this entry to enable IPv6 support).
 JVM_OPTS="$JVM_OPTS -Djava.net.preferIPv4Stack=true"
 
-# jmx: metrics and administration interface
+# JMX: metrics and administration interface
 #
 # add this if you're having trouble connecting:
 # JVM_OPTS="$JVM_OPTS -Djava.rmi.server.hostname=<public name>"
