@@ -7,13 +7,15 @@ RUN tar -zxvf p-cass.tgz
 ENV CASSANDRA_COMMAND palantir-cassandra-2.2.13-1.0.0-rc1/bin/cassandra
 
 ENV _JAVA_OPTIONS=-Dcassandra.skip_wait_for_gossip_to_settle=0
-ENV CASSANDRA_CONFIG /etc/cassandra
+ENV CASSANDRA_CONFIG palantir-cassandra-2.2.13-1.0.0-rc1/conf/
 ENV CASSANDRA_YAML $CASSANDRA_CONFIG/cassandra.yaml
 ENV CASSANDRA_ENV $CASSANDRA_CONFIG/cassandra-env.sh
 
 COPY cassandra.yaml $CASSANDRA_YAML
 COPY cassandra-env.sh $CASSANDRA_ENV
 COPY entrypoint.sh /entrypoint.sh
+
+RUN touch /etc/cassandra/jmxremote.password && chmod 600 /etc/cassandra/jmxremote.password
 
 EXPOSE 7000 7001 7199 9042 9160
 
