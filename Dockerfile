@@ -1,6 +1,6 @@
 FROM cassandra:2.2.9
 
-RUN apt-get install -y curl
+RUN apt-get update & apt-get install -y curl
 RUN curl -Lk https://bintray.com/palantir/releases/download_file?file_path=com%2Fpalantir%2Fcassandra%2Fpalantir-cassandra%2F2.2.13-1.0.0-rc1%2Fpalantir-cassandra-2.2.13-1.0.0-rc1.tgz | tar -zxv
 ENV CASSANDRA_COMMAND palantir-cassandra-2.2.13-1.0.0-rc1/bin/cassandra
 
