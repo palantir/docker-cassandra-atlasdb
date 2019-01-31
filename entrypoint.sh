@@ -6,10 +6,10 @@ set -e
 
 # first arg is `-f` or `--some-option`
 if [ "${1:0:1}" = '-' ]; then
-    set -- $CASSANDRA_COMMAND -f "$@"
+    set -- cassandra -f "$@"
 fi
 
-if [ "$1" = $CASSANDRA_COMMAND ]; then
+if [ "$1" = cassandra ]; then
     # TODO detect if this is a restart if necessary
     : ${CASSANDRA_LISTEN_ADDRESS='auto'}
     if [ "$CASSANDRA_LISTEN_ADDRESS" = 'auto' ]; then
